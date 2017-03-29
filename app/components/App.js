@@ -1,5 +1,6 @@
 var React = require('react');
 var RecipeBox = require('./RecipeBox');
+var RecipeButton = require('./RecipeButton');
 
 var App = React.createClass({
 
@@ -9,7 +10,8 @@ var App = React.createClass({
                 <div className="well">
                     <h1 className="text-center">Recipe Box</h1>
                 </div>
-                <RecipeBox />
+                <RecipeBox/>
+                <RecipeButton/>
             </div>
         )
     }

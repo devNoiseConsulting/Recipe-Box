@@ -2,13 +2,20 @@ var React = require('react');
 var Ingredient = require('./Ingredient');
 
 var Recipe = React.createClass({
+    getInitialState: function() {
+        return {open: false};
+    },
+
+    toggleRecipe: function(e) {
+        let open = !this.state.open;
+        this.setState({open: open});
+    },
 
     render: function() {
-        return (
-            <div className="panel panel-primary">
-                <div className="panel-heading">
-                    {this.props.recipe.title}
-                </div>
+        let panelBody = '';
+
+        if (this.state.open) {
+            panelBody = (
                 <div className="panel-body">
                     <h4 className="text-center">Ingredients</h4>
                     <hr/>
@@ -27,6 +34,16 @@ var Recipe = React.createClass({
                         </div>
                     </div>
                 </div>
+            );
+        }
+        return (
+            <div className="panel panel-success">
+                <div className="panel-heading">
+                    <h3 className="recipe">
+                        <a onClick={this.toggleRecipe}>{this.props.recipe.title}</a>
+                    </h3>
+                </div>
+                {panelBody}
             </div>
         )
     }
