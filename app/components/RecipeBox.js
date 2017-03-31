@@ -2,22 +2,16 @@ var React = require('react');
 var Recipe = require('./Recipe');
 
 var RecipeBox = React.createClass({
-    getInitialState: function() {
-        let recipes = [
-            {
-                id: 0,
-                title: "Pork Roast",
-                ingredients: ["Pork", "Seasonings"]
-            }
-        ];
-        return {recipes: recipes};
+    recipeSort: function(a, b) {
+      return a.title > b.title;
     },
 
     render: function() {
+        let recipes = this.props.recipes.sort(this.recipeSort);
         return (
             <div className="container">
-                {this.state.recipes.map(function(recipe, i) {
-                    return (<Recipe recipe={recipe} key={recipe.id}/>);
+                {recipes.map(function(recipe, i) {
+                    return (<Recipe recipe={recipe} key={recipe.id} delete={this.props.delete} update={this.props.update}/>);
                 }, this)}
             </div>
         )

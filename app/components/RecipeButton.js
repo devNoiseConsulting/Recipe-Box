@@ -3,6 +3,10 @@ var RecipeModal = require('./RecipeModal');
 
 var RecipeButton = React.createClass({
     render: function() {
+        var recipe = { title: '', ingredients: ''};
+        if (this.props.recipe) {
+          recipe = this.props.recipe;
+        }
         return (
             <div className="container">
                 <div className="row">
@@ -12,7 +16,7 @@ var RecipeButton = React.createClass({
                         </button>
                     </div>
                 </div>
-                <RecipeModal/>
+                <RecipeModal onClick={this.props.onClick} title={recipe.title} indgredients={recipe.ingredients}/>
             </div>
         );
     }

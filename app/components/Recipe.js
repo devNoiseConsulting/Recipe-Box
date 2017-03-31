@@ -11,6 +11,14 @@ var Recipe = React.createClass({
         this.setState({open: open});
     },
 
+    removeRecipe: function(e) {
+      this.props.delete(this.props.recipe.id);
+    },
+
+    editRecipe: function(e) {
+      console.log("editRecipe");
+    },
+
     render: function() {
         let panelBody = '';
 
@@ -27,10 +35,10 @@ var Recipe = React.createClass({
                     </ul>
                     <div className="row">
                         <div className="col-xs-6">
-                            <button type="button" className="btn btn-danger btn-block">Delete</button>
+                            <button type="button" className="btn btn-danger btn-block" onClick={this.removeRecipe}>Delete</button>
                         </div>
                         <div className="col-xs-6">
-                            <button type="button" className="btn btn-primary btn-block">Edit</button>
+                            <button type="button" className="btn btn-primary btn-block" onClick={this.editRecipe}>Edit</button>
                         </div>
                     </div>
                 </div>
