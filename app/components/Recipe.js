@@ -38,7 +38,7 @@ var Recipe = React.createClass({
                             <button type="button" className="btn btn-danger btn-block" onClick={this.removeRecipe}>Delete</button>
                         </div>
                         <div className="col-xs-6">
-                            <button type="button" className="btn btn-primary btn-block" onClick={this.editRecipe}>Edit</button>
+                            <button type="button" className="btn btn-primary btn-block" data-toggle="modal" data-target="#recipeModal" onClick={this.editRecipe}>Edit</button>
                         </div>
                     </div>
                 </div>
