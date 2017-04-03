@@ -7,12 +7,12 @@ var RecipeModal = React.createClass({
 
     addRecipe: function(e) {
         let ingredients = this.state.ingredients.split(',');
-        ingredients = ingredients.map(x => x.trim());
+        ingredients = ingredients.map(x => x.trim()).join(',');
         let recipe = {
             title: this.state.title,
             ingredients: ingredients
         };
-        this.props.modalState.submit(recipe);
+        this.props.onClick(recipe);
         this.setState(this.getInitialState());
     },
 
@@ -29,7 +29,6 @@ var RecipeModal = React.createClass({
     render: function() {
         let title = this.props.title;
         let ingredients = this.props.ingredients;
-        let modalState = this.props.modalState;
 
         return (
             <div className="modal fade" id="recipeModal" tabIndex="-1" role="dialog" aria-labelledby="recipeModalLabel">
@@ -39,7 +38,7 @@ var RecipeModal = React.createClass({
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 className="modal-title" id="recipeModalLabel">{modalState.submitText}</h4>
+                            <h4 className="modal-title" id="recipeModalLabel">Add a Recipe</h4>
                         </div>
                         <div className="modal-body">
                             <form>
@@ -55,7 +54,7 @@ var RecipeModal = React.createClass({
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.addRecipe}>{modalState.submitText}</button>
+                            <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={this.addRecipe}>Add Recipe</button>
                         </div>
                     </div>
                 </div>
